@@ -2,3 +2,4 @@
 this repository contains tasks of Electronics path with smart methods
 
 Task 1: Tinkercad Circuit - LED Control
+picure contains code +  Circuit
