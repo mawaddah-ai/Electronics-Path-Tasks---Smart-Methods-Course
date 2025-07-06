@@ -1,9 +1,9 @@
 # Electronics-Path-Tasks---Smart-Methods-Course
 this repository contains tasks of Electronics path with smart methods
 
-Task 1: Tinkercad Circuit - LED Control
-picture contains code +  Circuit
+Task 1: Tinkercad Circuit - LED Control , picture contains code +  Circuit
 CODE :
+
 void setup() {
   pinMode(13, OUTPUT);
   pinMode(12, OUTPUT);
