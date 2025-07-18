@@ -1,0 +1,45 @@
+#include <Servo.h>
+
+const int SERVO_PINS[] = {2, 3, 4, 5, 6};
+Servo servos[5];
+
+unsigned long startTime;
+bool sweepDone = false;
+
+void setup() {
+  Serial.begin(9600);
+
+  for (int i = 0; i < 5; i++) {
+    servos[i].attach(SERVO_PINS[i], 500, 2500);
+  }
+
+  startTime = millis();
+}
+
+void loop() {
+  if (!sweepDone) {
+    // Sweep motion for 2 seconds
+    unsigned long currentTime = millis();
+    if (currentTime - startTime < 2000) {
+      for (int angle = 0; angle <= 180; angle += 5) {
+        setAllServos(angle);
+        delay(15);
+      }
+      for (int angle = 180; angle >= 0; angle -= 5) {
+        setAllServos(angle);
+        delay(15);
+      }
+    } else {
+      // After 2 seconds, fix all servos at 90 degrees
+      setAllServos(90);
+      sweepDone = true;
+    }
+  }
+  // No flex sensor input needed anymore
+}
+
+void setAllServos(int angle) {
+  for (int i = 0; i < 5; i++) {
+    servos[i].write(angle);
+  }
+}
